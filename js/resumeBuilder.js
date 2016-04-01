@@ -35,13 +35,13 @@ var education = {
 		{
 			"title" : "Front-end web developer nanodegree",
 			"school" : "Udacity",
-			"dates" : "2016-09-18",
+			"date" : "2016-09-18",
 			"url" : "https://www.udacity.com/"
 		},
 		{
 			"title" : "Full stack developer path",
 			"school" : "Code Academy",
-			"dates" : "2016-01-25",
+			"date" : "2016-01-25",
 			"url" : "https://www.codecademy.com/"
 		}
 	]
@@ -196,7 +196,7 @@ education.display = function() {
 		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[index].degree).replace("%majors%", education.schools[index].majors);
 		$(".education-entry:last").append(formattedSchoolDegree);
 
-});
+	});
 
 	education.onlineCourses.forEach(function(course, index) {
 
@@ -205,20 +205,16 @@ education.display = function() {
 		var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[index].school).replace("#", education.onlineCourses[index].url);
 		$(".online-entry:last").append(formattedSchool);
 
-		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[index].dates);
+		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[index].date);
 		$(".online-entry:last").append(formattedDates);
 		
 		var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[index].title);
 		$(".online-entry:last").append(formattedTitle);
 		
-  
-  });
+  	});
 };
 
-
 education.display();
-
-online.display();
 
 // Gathering locations
 
