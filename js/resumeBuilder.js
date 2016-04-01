@@ -9,7 +9,7 @@ var bio = {
 	},
 	"welcomeMessage" : "Hi! I'm a freelance developer based halfway between Europe and California.",
 	"skills" : [ "JavaScript", "HTML", "CSS", "gulp", "Git" ],
-	"bioPic" : "images/sheri.jpg"
+	"biopic" : "images/sheri.jpg"
 };
 
 var education = {
@@ -18,16 +18,16 @@ var education = {
 			"name" : "University of Ottawa",
 			"location" : "Ottawa, Canada",
 			"degree": "Bachelor's degree",
-			"major": "Psychology",
-			"dates" : 2004,
+			"majors": [ "Psychology", " I focused on one major at a time" ],
+			"dates" : "2004-02-06",
 			"url" : "http://www.uottawa.ca/"
 		},
 		{
 			"name" : "University of Ottawa",
 			"location" : "Ottawa, Canada",
 			"degree": "Bachelor's degree",
-			"major": "International politics",
-			"dates" : 2000,
+			"majors": [ "International politics", " I focused on one major at a time" ],
+			"dates" : "2000-11-17",
 			"url" : "http://www.uottawa.ca/"
 		}
 	],
@@ -35,13 +35,13 @@ var education = {
 		{
 			"title" : "Front-end web developer nanodegree",
 			"school" : "Udacity",
-			"dates" : "2016",
+			"dates" : "2016-09-18",
 			"url" : "https://www.udacity.com/"
 		},
 		{
 			"title" : "Full stack developer path",
 			"school" : "Code Academy",
-			"dates" : "2016",
+			"dates" : "2016-01-25",
 			"url" : "https://www.codecademy.com/"
 		}
 	]
@@ -52,7 +52,7 @@ var work = {
 		{
 			"employer" : "Skype",
 			"title" : "Senior Product Manager",
-			"dates" : "2010 to 2014",
+			"dates" : "2010 - 2014",
 			"location" : "Palo Alto, California",
 			"url" : "http://www.skype.com/",
 			"description" : "I was a Senior Product Manager on the Skype Developer Program, managing a set of web services to enable third-party developers to access the Skype platform via APIs, including documentation, content publishing, customer support and website development."
@@ -60,7 +60,7 @@ var work = {
 		{
 			"employer" : "Defra",
 			"title" : "Website Rationalisation Delivery Manager",
-			"dates" : "2007 to 2010",
+			"dates" : "2007 - 2010",
 			"location" : "London, England",
 			"url" : "http://www.defra.gov.uk/",
 			"description" : "While working for a large government department in the United Kingdom, I rationalized, redesigned and restructured web content into audience-based channels for a high-visibility initiative across several internal teams and external organizations."
@@ -72,7 +72,7 @@ var projects = {
 	"projects" : [
 		{
 			"title" : "She Spoke Clothing",
-			"dates" : 2016,
+			"dates" : "2016-07-09",
 			"description" : "I implemented an instance of WordPress for an exciting new small business.",
 			"url" : "http://www.shespokeclothing.com/",
 			"images" : [ "images/1.jpg", "images/2.jpg" ]
@@ -90,7 +90,7 @@ bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	$("#header").prepend(formattedName);
 	
-	var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
+	var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
 	$("#header").append(formattedPic);
 	
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -193,19 +193,11 @@ education.display = function() {
 		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[index].dates);
 		$(".education-entry:last").append(formattedSchoolDates);
 		
-		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[index].degree).replace("%major%", education.schools[index].major);
+		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[index].degree).replace("%majors%", education.schools[index].majors);
 		$(".education-entry:last").append(formattedSchoolDegree);
 
-  });
-};
+});
 
-
-education.display();
-
-// Appending online education
-
-online.display = function() {
-	
 	education.onlineCourses.forEach(function(course, index) {
 
 		$("#online").append(HTMLonlineClasses);
@@ -219,8 +211,12 @@ online.display = function() {
 		var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[index].title);
 		$(".online-entry:last").append(formattedTitle);
 		
+  
   });
 };
+
+
+education.display();
 
 online.display();
 
